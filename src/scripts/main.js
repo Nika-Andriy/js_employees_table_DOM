@@ -129,7 +129,7 @@ function addNewTable() {
       createCell(currectSalaryFormat),
     );
 
-    if (validation(nameValue, ageValue)) {
+    if (validation(nameValue, ageValue, positionValue, Number(salaryValue))) {
       tbody.appendChild(newEmployee);
     }
   });
@@ -143,7 +143,7 @@ function createCell(value) {
   return td;
 }
 
-function validation(names, age) {
+function validation(names, age, position, salary) {
   if (names.length < 4) {
     pushNotification(
       10,
@@ -155,6 +155,26 @@ function validation(names, age) {
 
     return false;
   } else if (age > 90 || age < 18) {
+    pushNotification(
+      10,
+      10,
+      'Error',
+      'Incorrect format of input.\n ' + 'Please, change to currect.',
+      'error',
+    );
+
+    return false;
+  } else if (position.length < 0 || position === '') {
+    pushNotification(
+      10,
+      10,
+      'Error',
+      'Incorrect format of input.\n ' + 'Please, change to currect.',
+      'error',
+    );
+
+    return false;
+  } else if (salary < 0) {
     pushNotification(
       10,
       10,
