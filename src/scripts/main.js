@@ -129,7 +129,7 @@ function addNewTable() {
       createCell(currectSalaryFormat),
     );
 
-    if (validation(nameValue, ageValue, positionValue, Number(salaryValue))) {
+    if (validation(nameValue, ageValue, positionValue, salaryValue)) {
       tbody.appendChild(newEmployee);
     }
   });
@@ -174,7 +174,7 @@ function validation(names, age, position, salary) {
     );
 
     return false;
-  } else if (salary < 0) {
+  } else if (salary === '' || Number(salary) < 0) {
     pushNotification(
       10,
       10,
